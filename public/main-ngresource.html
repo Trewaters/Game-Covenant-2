@@ -1,0 +1,164 @@
+<!--main.html-->
+<div class="clearfix">
+  <form ng-Submit="post()" ng-show="authenticated">
+    <h4><a ng-href="#/usrProfile" ng-click="showUser(current_user)">@{{current_user}}</a> says</h4>
+		<label>Event Title:
+    <input required type="text" class="form-control" placeholder="Title of the Event" ng-model="eveTitle">
+    </label><br>
+    <label>Event Type:
+    <select class="form-control" ng-model="eveType">
+    	<option value="Game">Game</option>
+    	<option value="Panel">Panel</option>
+    </select>
+    </label><br>
+    <label>Timezone
+    	<br>
+    	<select class="form-control" ng-model="eveTimezone">
+    	<option value="Pacific Standard Time, -8:00 UTC">Pacific Standard Time, -8:00 UTC</option>
+    	<option value="Mountain Standard Time, -7:00 UTC">Mountain Standard Time, -7:00 UTC</option>
+    	<option value="Central Standard Time, -6:00 UTC">Central Standard Time, -6:00 UTC</option>
+    	<option value="Eastern Standard Time, -5:00 UTC">Eastern Standard Time, -5:00 UTC</option>
+    	<option value="Brasilia Time, -3:00 UTC">Brasilia Time, -3:00 UTC</option>
+    	<option value="East Greenland Time, -1:00 UTC">East Greenland Time, -1:00 UTC</option>
+    	<option value="Greenwich Mean Time, +0:00 UTC">Greenwich Mean Time, +0:00 UTC</option>
+    	<option value="Western European Time, +0:00 UTC">Western European Time, +0:00 UTC</option>
+    	<option value="Central European Time, +1:00 UTC">Central European Time, +1:00 UTC</option>
+    	<option value="Pakistan Standard Time, +5:00 UTC">Pakistan Standard Time, +5:00 UTC</option>
+    	<option value="Vostok Time, +6:00 UTC">Vostok Time, +6:00 UTC</option>
+    	<option value="Western Indonesian Time, +7:00 UTC">Western Indonesian Time, +7:00 UTC</option>
+    	<option value="Hong Kong Time, +8:00 UTC">Hong Kong Time, +8:00 UTC</option>
+    	<option value="Australian Central Standard Time, +9:30 UTC">Australian Central Standard Time, +9:30 UTC</option>
+    	<option value="Fiji TIme, +12:00 UTC">Fiji TIme, +12:00 UTC</option>
+    </select>
+    </label><br>
+		<label>Event Duration:
+		<input type="number" class="form-control" placeholder="Event duration" ng-model="eveDuration">
+    </label><br>
+    <label>Game System:
+    <input type="text" class="form-control" placeholder="Rule System" ng-model="eveSystem">
+    </label><br>
+    <label>Setting (or Description):
+    <textarea  class="form-control" maxlength="200" rows="3" class="form-control" placeholder="Setting (or Description)" ng-model="eveSetting"></textarea>
+    </label><br>
+    <label># of Players:
+    <input type="number" class="form-control" placeholder="Players (or Panelist) minimum-maximum" ng-model="evePlayMax">
+    </label><br>
+    <label>Preferred Player Knowledge of Rule System:
+    	<br>
+    	<select class="form-control" ng-model="eveKnow">
+    		<option value="Never Played">Never Played</option>
+    		<option value="Beginner (needs to ask questions about game)">Beginner (needs to ask questions about game)</option>
+    		<option value="Proficient (can find answers to questions in the rule system material, if needed)">Proficient (can find answers to questions in the rule system material, if needed)</option>
+    		<option value="Master (can run the game, if needed)">Master (can run the game, if needed)</option>
+    	</select>
+    </label>
+    <br>
+    <label>Minimum Maturity Level:
+    	<br>
+    <select class="form-control" ng-model="eveMaturity">
+    	<option value="E: Everyone">E: Everyone</option>
+    	<option value="T: Teen (13+)">T: Teen (13+)</option>
+    	<option value="NC 17: No Children (17+)">NC 17: No Children (17+)</option>
+    	<option value="A: Adults Only (18+)">A: Adults Only (18+)</option>
+    	</select>
+    </label>
+    <br>
+    <label>Pre Gen Characters provided?
+    	<input type="checkbox" class="form-control" value="true" ng-model="evePreGen">
+    </label><br>
+    <label>Link for more info:
+    <input type="url" class="form-control" placeholder="Links" ng-model="eveLink">
+    </label><br>
+    <label>Host Email:
+    <input type="email"  class="form-control" placeholder="Host contact email" ng-model="eveEmail">
+    </label><br>
+    <label>Host Name:
+    <input type="text" class="form-control" placeholder="Host name" ng-model="eveHost">
+    </label><br>
+    <label>Banner Image:
+    <input type="url"  class="form-control" placeholder="submit banner" ng-model="eveImage">
+    </label><br>
+    <label>Website:
+    <input type="url" class="form-control" placeholder="LUG Con website page" ng-model="eveWebsite">
+    </label><br>
+    <label>Join Here LUG Con community event link:
+    <input type="url" class="form-control" placeholder="JOIN HERE LUG Con community event link" ng-model="eveJoin">
+    </label><br>
+    <label>Add Event to selected Convention
+    <!--
+      [To Do]
+      1) I can't save the eveRegCon data since the conController has control over this section of the code.
+      I need to be able to save the selected value to eveRegCon. That is how I plan to register events into the convention.
+      reference https://docs.angularjs.org/guide/controller
+      reference https://docs.angularjs.org/guide/forms
+      
+      2) Also trying to sort by current_user. Not sure how to put that in the filter argument.
+      reference https://docs.angularjs.org/api/ng/filter/filter
+      
+      -->
+      
+      <!-- [TO DO] - update form with visual validation
+  use bootstrap to update the fields with validation animation
+  http://getbootstrap.com/css/#forms-control-validation
+  -->
+  
+      <select type="text" class="form-control" ng-model="eveRegCon">
+  
+        <option ng-selected="{{con.conName == eveRegCon}}" value="{{con.conName}}" ng-repeat="con in cons| filter:{conPlayerList:current_user,conCreate:true}:true" >{{con.conName}} - ({{con._id}})</option>
+     
+      </select>
+    </label>
+    <input class="btn submit-btn pull-right" type="submit" value="Submit Event" />
+  </form>
+  <div id="post-stream">
+    <h4>Event List</h4>
+      <div class="post" ng-repeat="post in posts | orderBy:'eveTime':false" ng-class-odd="'odd'" ng-class-even="'even'">
+        <button class="btn submit-btn pull-right" ng-click="joinEve($index)">Join event {{post.eveTitle}}</button> 
+        <p><big><b> Title: <a ng-href="#/eveProfile" ng-click="showEve(post.eveTitle)">{{post.eveTitle}}</a></b></big> 
+        	<br>
+        Type: <em>{{post.eveType}}</em>
+        <br>
+        Timezone: <em>{{post.eveTimezone}}</em>
+        <br>
+        Duration: <em>{{post.eveDuration}}</em>
+        <br>
+        System: <em>{{post.eveSystem}}</em>
+        <br>
+        Setting: <em>{{post.eveSetting}}</em>
+        <br>
+        Players: <em>{{post.evePlayMax}}</em>
+        <br>
+        Knowledge: <em>{{post.eveKnow}}</em>
+        <br>
+        Maturity: <em>{{post.eveMaturity}}</em>
+        <br>
+        Pre-generated Characters: <em>{{post.evePreGen}}</em>
+        <br>
+        Website: <em><a ng-href="{{post.eveLink}}" target="_blank">{{post.eveLink}}</a></em>
+        <br>
+        Contact Email: <em>{{post.eveEmail}}</em>
+        <br>
+        Host: <em>{{post.eveHost}}</em>
+        <br>
+        Banner Image: <em>{{post.eveImage}}</em>
+        <br>
+        
+        LUG Con webpage: <em><a ng-href="{{post.eveWebsite}}" target="_blank">{{post.eveWebsite}}</a></em>
+        <br>
+        Join Here: <em><a ng-href="{{post.eveJoin}}" target="_blank">{{post.eveJoin}}</a></em>
+        <br>
+        Event Registered to be played in: <em>{{post.eveRegCon}}</em>
+        <br>
+        Event Approved by Con Organizer: <em>{{post.eveApproved}}</em>
+        <br>
+        Event Completed by GM: <em>{{post.eveComplete}}</em>
+        <br>
+        Event Created on: <em>{{post.eveCreatedDate | date:"h:mma 'on' MMM d, y"}}</em>
+        <br>
+        Registered Players: <em>{{post.evePlayers}}</em>
+          </p>
+        <small>Posted by @{{post.eveUser}}</small>
+        <small class="pull-right">{{post.eveTime | date:"h:mma 'on' MMM d, y"}}</small>
+      </div>
+  </div>
+</div>

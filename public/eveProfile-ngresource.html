@@ -1,0 +1,109 @@
+<!-- eveProfile.html -->
+<div class="clearfix" >
+	
+		 <dl class="dl-horizontal">
+		 <dt><b>Title:</b></dt> <dd><b>{{eveSingle.eveTitle}}</b></dd>	 	
+		 <dt><b>Type:</b></dt> <dd><b>{{eveSingle.eveType}}</b></dd>
+		 <dt><b>Timzone:</b></dt> <dd><b>{{eveSingle.eveTimezone}}</b></dd>
+		 <dt><b>Duration(hours):</b></dt> <dd><b>{{eveSingle.eveDuration}}</b></dd>
+		 <dt><b>System:</b></dt> <dd><b>{{eveSingle.eveSystem}}</b></dd>
+		 <dt><b>Setting:</b></dt> <dd><b>{{eveSingle.eveSetting}}</b></dd>
+		 <dt><b>Players (# of):</b></dt> <dd><b>{{eveSingle.evePlayMax}}</b></dd>
+		 <dt><b>Knowledge Level:</b></dt> <dd><b>{{eveSingle.eveKnow}}</b></dd>
+		 <dt><b>Maturity:</b></dt> <dd><b>{{eveSingle.eveMaturity}}</b></dd>
+		 <dt><b>Pre-Gens (PCs):</b></dt> <dd><b>{{eveSingle.evePreGen}}</b></dd>
+		 <dt><b>Link (game info):</b></dt> <dd><b>{{eveSingle.eveLink}}</b></dd>
+		 <dt><b>Host email:</b></dt> <dd><b>{{eveSingle.eveEmail}}</b></dd>
+		 <dt><b>Host:</b></dt> <dd><b>{{eveSingle.eveHost}}</b></dd>
+		 <dt><b>Image:</b></dt> <dd><b>{{eveSingle.eveImage}}</b></dd>
+		 <dt><b>Game Website:</b></dt> <dd><b>{{eveSingle.eveWebsite}}</b></dd>
+		 <dt><b>Join Game:</b></dt> <dd><b>{{eveSingle.eveJoin}}</b></dd>
+		 <dt><b>Convention:</b></dt> <dd><b>{{eveSingle.eveRegCon}}</b></dd>
+		 <dt><b>Event Completed?:</b></dt> <dd><b>{{eveSingle.eveComplete}}</b></dd>
+		 <dt><b>Event Approved?:</b></dt> <dd><b>{{eveSingle.eveApproved}}</b></dd>
+		 <dt><b>Created on:</b></dt> <dd><b>{{eveSingle.eveCreatedDate}}</b></dd>
+		 <dt><b>Player List:</b></dt> <dd><b>{{eveSingle.evePlayers}}</b></dd>
+	 	
+	 </dl>
+	
+	 <!-- Elements to include on this page 
+		 
+	eveUser: { type: String, trim: true }, 
+	// This should be the unique _id for the MongoDB record that created this event
+	// example: "trewaters"
+		
+	eveTitle: { type: String, trim: true },
+	// Event name or Title
+	//example: "Star Wars D6: A Night At the Opera"
+	
+	eveType: { type: String, trim: true }, 
+	// Pick list ("Event, Game")
+		
+	eveTime: { type: Date, default: Date.now }, 
+	// The user should add this in manually, format (Day name, comma, Month name, space, day number, comma, year number, comma, hour, AM/PM, hyphen, hour, AM/PM, open parenthesis, Timezone abbreviation, closing parenthesis)
+	//example: "Sunday, June 7, 2:00 AM - 5:00 AM (EST)"
+	// Post time consist of many parts
+	
+	//post.date: Date, // Month, day, year
+	//post.clock: Date, // hour and minutes, AM/PM, do a 24 hour clock time
+	//post.day: {type:String, trim:true}, // calculate what day of the week this takes place	
+	
+	eveTimezone: { type: String, trim: true }, 
+	// Make a short list of timezones for the user to select from
+	// example: "Hong Kong Time (GMT +8, HKT)"
+	
+	eveDuration: { type: String, trim: true },
+	//duration: {type: Number, min:0, max:24}, //this is what it will be after testing, maybe
+	// the calculated time using the 
+	// example: "3 hours 15 minutes"
+	
+	eveSystem: { type: String, trim: true }, 
+	// Game System they plan to use
+	
+	eveSetting: { type: String, trim: true }, 
+	// Short description for the game or setting they are using
+	
+	evePlayMax: Number, 
+	// Max Number of players allowed in the game, eventually add min number too
+	// Later I would like this to also list the player {{name}}s that are in this event too
+	
+	eveKnow: { type: String, trim: true }, 
+	// Pick list of player knowledge, (Never Played, Beginner (needs to ask questions about game), Proficient (can find answers to questions in the rule system material, if needed), Master (can run the game, if needed) )
+	// example: "Never Played"
+	
+	eveMaturity: { type: String, trim: true }, 
+	// Pick list of maturity, (E: Everyone, T: Teen (13+), NC 17: No Children (17+), A: Adults Only (18+))
+	// example: "E: Everyone"
+	
+	evePreGen: Boolean, // Yes or No for GM making pre-gens available.
+
+	eveLink: { type: String, trim: true }, // http link, example: "http://www.1km1kt.net/"
+	
+	eveEmail: { type: String, trim: true }, // email, example: "person@gmail.com"
+	
+	eveHost: { type: String, trim: true }, // Same as the GM of the game or host of panel, Admin for this game
+	// The host of the game that doesn't have to be the creator
+	// This should relate to the post.User field, but not unique field
+	//example: "Tre' Grisby"
+	
+	eveImage: { type: String, trim: true }, // http link to a file or the image, example: "http://www.1km1kt.net/"
+	
+	eveWebsite: { type: String, trim: true }, // http link, Game website, marketplace information , example: "http://www.1km1kt.net/"
+	
+	eveJoin: { type: String, trim: true }, //  http link that will help players join the game, example: "http://www.1km1kt.net/"
+	
+	eveRegCon: {type: String, trim: true}, // name of the convention that this event is part of
+	
+	eveComplete : Boolean, // game is done and ready to be listed on the schedule
+	
+	eveApproved : Boolean, // game has been approved by the convention organizer
+	
+	eveCreatedDate: {type: Date, default: Date.now}, //date this user was created
+	
+	//eveComments: [{type: String, trim: true }] //array of comments about the event, embed document {user, comment, date/time}
+	//evePlayerWait/playerWait: [{type: String, trim: true}] - array of users that are waiting to get into the event
+	
+	evePlayers: [{type: String, trim: true}] //array of players in the game
+	
+		 -->
+</div>

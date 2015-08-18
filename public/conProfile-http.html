@@ -1,0 +1,67 @@
+<!-- conProfile.html -->
+<div class="clearfix">
+<!-- 
+	Read up on directives so I can make this page work the way I imagine
+Reference https://docs.angularjs.org/guide/directive 
+Reference https://docs.angularjs.org/api/ng/directive 
+
+	 -->
+	 <dl class="dl-horizontal">
+	 	<dt><b>Convention Name:</b></dt> <dd><b>{{conSingle.conName}}</b></dd>
+	 	
+	 	<dt>Description:</dt> <dd>{{conSingle.conDesc}}</dd>
+		
+		<dt>Date Start:</dt> <dd>{{conSingle.conDateStart | date: 'longDate'}}</dd>
+		
+		<dt>Date End:</dt> <dd>{{conSingle.conDateEnd | date: 'longDate'}}</dd>
+		
+		<dt>Logo Link:</dt> <dd>{{conSingle.conLogo}}</dd>
+		
+		<dt>Website:</dt> <dd>{{conSingle.conWww}}</dd>
+		
+		<dt>Created by:</dt> <dd>{{conSingle.conOwner}}</dd>
+		
+		<dt>Created on:</dt> <dd>{{conSingle.conCreatedDate}}</dd>
+		
+		<dt>Player List:</dt> <dd>{{conSingle.conPlayerList}}</dd>
+	 </dl>
+	 
+<!-- Elements to include on this page
+	I will be using Bootstrap heavily to format this page (http://getbootstrap.com/)
+		 
+	_id:  
+		// add conID so identify a specific MongoDB data item, 
+		This is a reference link so I can verify which object I am working with
+	
+	conName:  
+		// name of the convention
+		
+	conDesc:  
+		// description of the convention
+		
+	conDateStart:  
+		// date and time the convention starts
+		
+	conDateEnd: 
+		// date and time the convention ends
+		
+	conLogo: 
+		// branding for the convention
+		
+	conWww: 
+		// convention website
+		
+	conCreate: 
+		// users can create games if 'true'
+		
+	conOwner: 
+		// owner or organizer of the convention. Allows an array of names to search on
+	
+	conCreatedDate: 
+		// date the convention was created
+		
+	conPlayerList: 
+		// Array of registered players
+	
+	-->
+</div>

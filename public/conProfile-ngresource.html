@@ -1,0 +1,109 @@
+<!-- conProfile.html -->
+<div class="clearfix">
+<!-- 
+	Read up on directives so I can make this page work the way I imagine
+Reference https://docs.angularjs.org/guide/directive 
+Reference https://docs.angularjs.org/api/ng/directive 
+
+	 -->
+	 <dl class="dl-horizontal">
+	 	<dt><b>Convention Name:</b></dt> <dd><b>{{conSingle.conName}}</b></dd>
+	 	
+	 	<dt>Description:</dt> <dd>{{conSingle.conDesc}}</dd>
+		
+		<dt>Date Start:</dt> <dd>{{conSingle.conDateStart | date: 'longDate'}}</dd>
+		
+		<dt>Date End:</dt> <dd>{{conSingle.conDateEnd | date: 'longDate'}}</dd>
+		
+		<dt>Logo Link:</dt> <dd>{{conSingle.conLogo}}</dd>
+		
+		<dt>Website:</dt> <dd>{{conSingle.conWww}}</dd>
+		
+		<dt>Created by:</dt> <dd>{{conSingle.conOwner}}</dd>
+		
+		<dt>Created on:</dt> <dd>{{conSingle.conCreatedDate}}</dd>
+		
+		<dt>Player List:</dt> <dd>{{conSingle.conPlayerList}}</dd>
+	 </dl>
+	 
+<!-- Elements to include on this page
+	I will be using Bootstrap heavily to format this page (http://getbootstrap.com/)
+		 
+	_id:  
+		// add conID so identify a specific MongoDB data item, 
+		This is a reference link so I can verify which object I am working with
+	
+	conName:  
+		// name of the convention
+		
+	conDesc:  
+		// description of the convention
+		
+	conDateStart:  
+		// date and time the convention starts
+		
+	conDateEnd: 
+		// date and time the convention ends
+		
+	conLogo: 
+		// branding for the convention
+		
+	conWww: 
+		// convention website
+		
+	conCreate: 
+		// users can create games if 'true'
+		
+	conOwner: 
+		// owner or organizer of the convention. Allows an array of names to search on
+	
+	conCreatedDate: 
+		// date the convention was created
+		
+	conPlayerList: 
+		// Array of registered players
+	
+	-->
+	
+	<div id="conEvent-stream">
+    <h4>Event List</h4>
+      <div class="conEvent" ng-repeat="conEvent in conEvents | filter:{eveRegCon:conSingle.conName} |orderBy:'eveTime':true" ng-class-odd="'odd'" ng-class-even="'even'"> 
+        <p><big><b>Title: {{conEvent.eveTitle}}</b></big> 
+        	<br>
+        Type: <em>{{conEvent.eveType}}</em>
+        <br>
+        Timezone: <em>{{conEvent.eveTimezone}}</em>
+        <br>
+        Duration: <em>{{conEvent.eveDuration}}</em>
+        <br>
+        System: <em>{{conEvent.eveSystem}}</em>
+        <br>
+        Setting: <em>{{conEvent.eveSetting}}</em>
+        <br>
+        Players: <em>{{conEvent.evePlayMax}}</em>
+        <br>
+        Knowledge: <em>{{conEvent.eveKnow}}</em>
+        <br>
+        Maturity: <em>{{conEvent.eveMaturity}}</em>
+        <br>
+        Pre-generated Characters: <em>{{conEvent.evePreGen}}</em>
+        <br>
+        Website: <em><a ng-href="{{conEvent.eveLink}}" target="_blank">{{conEvent.eveLink}}</a></em>
+        <br>
+        Contact Email: <em>{{conEvent.eveEmail}}</em>
+        <br>
+        Host: <em>{{conEvent.eveHost}}</em>
+        <br>
+        Banner Image: <em>{{conEvent.eveImage}}</em>
+        <br>
+        
+        LUG Con webpage: <em><a ng-href="{{conEvent.eveWebsite}}" target="_blank">{{conEvent.eveWebsite}}</a></em>
+        <br>
+        Join Here: <em><a ng-href="{{conEvent.eveJoin}}" target="_blank">{{conEvent.eveJoin}}</a></em>
+        <br>
+        Event Registered to be played in: {{conEvent.eveRegCon}}
+        	</p>
+        <small>Posted by @{{conEvent.eveUser}}</small>
+        <small class="pull-right">{{conEvent.eveTime | date:"h:mma 'on' MMM d, y"}}</small>
+      </div>
+</div>

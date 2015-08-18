@@ -1,0 +1,62 @@
+<!-- usrProfile.html -->
+<div class="clearfix" >
+	
+		 <dl class="dl-horizontal">
+	 	<dt><b>Call Sign:</b></dt> <dd><b>{{usrSingle.username}}</b></dd>
+		 <dt><b>Email:</b></dt> <dd><b>{{usrSingle.usrEmail}}</b></dd>
+		 <dt><b>First Name:</b></dt> <dd><b>{{usrSingle.usrFirst}}</b></dd>
+		 <dt><b>Last Name:</b></dt> <dd><b>{{usrSingle.usrLast}}</b></dd>
+		 <dt><b>Timezone:</b></dt> <dd><b>{{usrSingle.usrTimezone}}</b></dd>
+		 <dt><b>Country:</b></dt> <dd><b>{{usrSingle.usrCountry}}</b></dd>
+		 <dt><b>Zip Code (US):</b></dt> <dd><b>{{usrSingle.usrZipCode}}</b></dd>
+		 <dt><b>Gender:</b></dt> <dd><b>{{usrSingle.usrGender}}</b></dd>
+		 <dt><b>Birthday (weekday):</b></dt> <dd><b>{{usrSingle.usrBirth}}</b></dd>
+		 <dt><b>Pref Playtime:</b></dt> <dd><b>{{usrSingle.usrPrefHours}}</b></dd>
+		 <dt><b>Social Media:</b></dt> <dd><b>{{usrSingle.usrSocAuth}}</b></dd>
+		 <dt><b>Date Joined GC:</b></dt> <dd><b>{{usrSingle.usrCreatedDate}}</b></dd>	 	
+	 	
+	 </dl>
+	 <!-- Elements to include on this page 
+	username: 
+		// call sign the user wants to be known by // usrName/username
+		
+	password:
+		//hash created from password // usrPass/password
+		
+	usrEmail:
+		//user contact email and verification
+		
+	usrFirst:
+		//user first name
+		
+	usrLast:
+		//user last name
+		
+	usrTimezone:
+		//user local timezone for game scheduling and event time conversion, eventually a pick list in GMT
+	
+	usrCountry:
+		//user country
+		
+	usrZipCode:
+		//user zip code
+		
+	usrGender:
+		//user gender, pick list (male,female,other)
+		
+	usrBirth:
+		//user birthdate, later make this a date field so I can do some conversions, validations, and calculations on it
+		
+	usrPrefHours:
+		//user preferred playing hours, make this a pick list of time blocks by hours (Morning, Noon, Night), use local timezone for this
+		
+	usrSocAuth:
+		//users preferred social media authentication
+			
+	usrCreatedDate:
+		//user profile created date
+		
+	//usrID/userID: { type : Number } //user ID based on when they joined the system. Unique number but not a unique id for the database objects
+
+		 -->
+</div>

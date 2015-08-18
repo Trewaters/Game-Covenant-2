@@ -1,0 +1,65 @@
+<!--register.html-->
+
+<!-- [TO DO] - update form with visual validation
+  use bootstrap to update the fields with validation animation
+  http://getbootstrap.com/css/#forms-control-validation
+  -->
+
+<form class="form-auth" ng-submit="register()">
+  <h2>Register</h2>
+  <p class="text-warning">{{error_message}}</p>
+  <label>Username:
+  <input required type="text" ng-model="user.username" placeholder="Username" class="form-control"></label><br>
+  <label>Password:
+  <input required type="password" ng-model="user.password" placeholder="Password" class="form-control"></label><br>
+	<label>Email:
+  <input required type="email" ng-model="user.usrEmail" placeholder="email address" class="form-control"><br> 
+  </label><br>
+  <label>First Name:
+  <input type="text" ng-model="user.usrFirst" placeholder="First Name" class="form-control"></label><br>
+  <label>Surname/Last Name:
+  <input type="text" ng-model="user.usrLast" placeholder="Surname/Last Name" class="form-control"></label><br>
+    <label>Timezone
+    	<br>
+    	<select class="form-control" ng-model="user.usrTimezone">
+    	<option value="Pacific Standard Time, -8:00 UTC">Pacific Standard Time, -8:00 UTC</option>
+    	<option value="Mountain Standard Time, -7:00 UTC">Mountain Standard Time, -7:00 UTC</option>
+    	<option value="Central Standard Time, -6:00 UTC">Central Standard Time, -6:00 UTC</option>
+    	<option value="Eastern Standard Time, -5:00 UTC">Eastern Standard Time, -5:00 UTC</option>
+    	<option value="Brasilia Time, -3:00 UTC">Brasilia Time, -3:00 UTC</option>
+    	<option value="East Greenland Time, -1:00 UTC">East Greenland Time, -1:00 UTC</option>
+    	<option value="Greenwich Mean Time, +0:00 UTC">Greenwich Mean Time, +0:00 UTC</option>
+    	<option value="Western European Time, +0:00 UTC">Western European Time, +0:00 UTC</option>
+    	<option value="Central European Time, +1:00 UTC">Central European Time, +1:00 UTC</option>
+    	<option value="Pakistan Standard Time, +5:00 UTC">Pakistan Standard Time, +5:00 UTC</option>
+    	<option value="Vostok Time, +6:00 UTC">Vostok Time, +6:00 UTC</option>
+    	<option value="Western Indonesian Time, +7:00 UTC">Western Indonesian Time, +7:00 UTC</option>
+    	<option value="Hong Kong Time, +8:00 UTC">Hong Kong Time, +8:00 UTC</option>
+    	<option value="Australian Central Standard Time, +9:30 UTC">Australian Central Standard Time, +9:30 UTC</option>
+    	<option value="Fiji TIme, +12:00 UTC">Fiji TIme, +12:00 UTC</option>
+    </select>
+    </label>
+  <br>
+  <label>Country:
+  <input type="text" ng-model="user.usrCountry" placeholder="Country" class="form-control">
+  </label><br>
+  <label>Zip Code:
+  <input type="text" ng-model="user.usrZipCode" placeholder="Zip Code" class="form-control">
+  </label><br>  
+  <label>Gender:
+  <select ng-model="user.usrGender" placeholder="Self Identification" class="form-control">
+    <option value="Female">Female</option>
+    <option value="Male">Male</option>
+    <option value="Other">Other</option>
+  </select>
+  </label><br>
+  <label>Birthday (mm/dd/yyyy):
+  <input type="date" ng-model="user.usrBirth" placeholder="birthday for age verification" class="form-control">
+  </label><br>  
+  <label>Preferred hours:
+  <input type="text" ng-model="user.usrPrefHours" placeholder="Preferred playing hours" class="form-control"></label><br>
+  <label>Social Media:
+  <input type="text" ng-model="user.usrSocAuth" placeholder="Social Media login" class="form-control"></label><br>
+  
+  <input type="submit" value="Register" class="btn btn-primary" />
+</form>

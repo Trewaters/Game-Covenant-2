@@ -1,0 +1,79 @@
+<!--main.html-->
+
+<!-- [TO DO] - update form with visual validation
+  use bootstrap to update the fields with validation animation
+  http://getbootstrap.com/css/#forms-control-validation
+  -->
+  
+<div class="clearfix">
+  <form ng-Submit="saveCon()" ng-show="authenticated">
+    <h4>Create The Convention</h4>
+    <label>Convention Name:
+      <input required type="text" class="form-control" placeholder="Convention Name" ng-model="conName">
+    </label>
+    <br>
+    <label>Convention Description:
+      <textarea required class="form-control" maxlength="200" rows="3" class="form-control" placeholder="Convention Description"
+      ng-model="conDesc"></textarea>
+    </label>
+    <br>
+    <label>Start Date (mm/dd/yyyy):
+      <input required type="text" class="form-control" placeholder="Date convention starts mm/dd/yyyy"
+      ng-model="conDateStart">
+    </label>
+    <br>
+    <label>End Date (mm/dd/yyyy):
+      <input required type="text" class="form-control" placeholder="Date convention ends mm/dd/yyyy" ng-model="conDateEnd">
+    </label>
+    <br>
+    <label>Convention Logo:
+      <input required type="url" class="form-control" placeholder="Convention logo url" ng-model="conLogo">
+    </label>
+    <br>
+    <label>Convention website:
+      <input required type="url" class="form-control" placeholder="Convention website url" ng-model="conWww">
+    </label>
+    <br>
+    <label>Players can create games?:
+      <select required class="form-control" ng-model="conCreate">
+        <option value="true">True</option>>
+        <option value="false">False</option>>
+      </select>
+    </label>
+    <br>
+    <label>Convention Organizer:</label>
+    <br>{{current_user}}
+    <input class="btn submit-btn pull-right" type="submit" value="Create Convention" />
+  </form>
+  <div id="con-stream">
+    <h4>Convention List</h4>
+    <div class="con" ng-repeat="con in cons | orderBy:'conCreatedDate':false" ng-class-odd="'odd'" ng-class-even="'even'">
+      <!-- remove the $index when I can get the sort issue figured out. (ng-repeat="con in cons | orderBy:'conCreatedDate':true") -->
+      <button class="btn submit-btn pull-right" ng-click="joinCon($index)" >Register to {{con.conName}} $index= [{{$index}}]</button>
+      
+       <h3><b>Convention Name: </b><a ng-href="#/conProfile" ng-click="showCon($scope.con._id)"><b>{{con.conName}}</b></a></h3>
+       <dl class="dl-horizontal">
+	 	
+	 	<dt>Description:</dt> <dd>{{con.conDesc}}</dd>
+		
+		<dt>Date Start:</dt> <dd>{{con.conDateStart | date: 'longDate' }}</dd>
+		
+		<dt>Date End:</dt> <dd>{{con.conDateEnd | date: 'longDate'}}</dd>
+		
+		<dt>Logo Link:</dt> <dd><a ng-href="{{con.conLogo}}" target="_blank">{{con.conLogo}}</a></dd>
+		
+		<dt>Website:</dt> <dd><a ng-href="{{con.conWww}}" target="_blank">{{con.conWww}}</a></dd>
+		
+		<dt>Organizer(s):</dt> <dd>{{con.conOwner}}</dd>
+		
+		<dt>Player List:</dt> <dd>{{con.conPlayerList}}</dd>
+    
+    <dt>Create?:</dt> <dd>{{con.conCreate}}</dd>
+    
+    <dt>Convention ID:</dt> <dd>{{con._id}}</dd>
+	 </dl>
+   <small>Convention Created at</small>
+        <small class="pull-right">{{con.conCreatedDate | date:"h:mma 'on' MMM d, y"}}</small>
+    </div>
+  </div>
+</div>
