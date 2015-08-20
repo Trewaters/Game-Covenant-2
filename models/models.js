@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var postSchema = new mongoose.Schema({ // [To Do] change to 'eventSchema'
 
-	//created_by: {type:String, trim:true},		//should be changed to ObjectId, ref "User"	
+	//eveCreatedBy: {type:String, trim:true},		//should be changed to ObjectId, ref "User"	
 
 	// look up mongoose specs and add these as the new schema for post.
 	// (http://mongoosejs.com/docs/schematypes.html)
@@ -25,9 +25,9 @@ var postSchema = new mongoose.Schema({ // [To Do] change to 'eventSchema'
 	//example: "Sunday, June 7, 2:00 AM - 5:00 AM (EST)"
 	// Post time consist of many parts
 	
-	//post.date: Date, // Month, day, year
-	//post.clock: Date, // hour and minutes, AM/PM, do a 24 hour clock time
-	//post.day: {type:String, trim:true}, // calculate what day of the week this takes place	
+	//eve.date: Date, // Month, day, year
+	//eve.clock: Date, // hour and minutes, AM/PM, do a 24 hour clock time
+	//eve.day: {type:String, trim:true}, // calculate what day of the week this takes place	
 	
 	eveTimezone: { type: String, trim: true }, 
 	// Make a short list of timezones for the user to select from
