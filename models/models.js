@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var postSchema = new mongoose.Schema({ // [To Do] change to 'eventSchema'
+var eveSchema = new mongoose.Schema({ // [To Do] change to 'eventSchema'
 
 	//eveCreatedBy: {type:String, trim:true},		//should be changed to ObjectId, ref "User"	
 
@@ -86,8 +86,11 @@ var postSchema = new mongoose.Schema({ // [To Do] change to 'eventSchema'
 });
 
 var userSchema = new mongoose.Schema({
-	username: { type: String, trim: true }, // call sign the user wants to be known by // usrName/username
-	password: { type: String, trim: true }, //hash created from password // usrPass/password
+	
+	username: { type: String, trim: true }, // call sign the user wants to be known by 
+	// usrName/username - I can't change this because passport uses it for authentication. 8/20/2015
+	password: { type: String, trim: true }, //hash created from password 
+	// usrPass/password - I can't change this because passport uses it for authentication. 8/20/2015
 	usrEmail: { type: String, trim: true }, //user contact email and verification
 	usrFirst: { type: String, trim: true }, //user first name
 	usrLast: { type: String, trim: true }, //user last name
@@ -116,7 +119,7 @@ var conSchema = new mongoose.Schema({
 	conPlayerList: [{ type: String, trim: true }] //Make this an array when it works. validate this in the future.
 });
 
-mongoose.model('Post', postSchema);
+mongoose.model('Post', eveSchema);
 mongoose.model('User', userSchema);
 mongoose.model('Con', conSchema);
 
@@ -128,7 +131,7 @@ var User = mongoose.model('User');
 // reference - https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
 // [DEBUG] - I can't get this to work for me. I have had to abandon it
 exports.findByUsername = function (userName, callback) {
-	User.findOne({ username: userName }, function (err, user) { 
+	User.findOne({ usrName: userName }, function (err, user) { 
 		if (err) {
 			return callback(err);
 		}

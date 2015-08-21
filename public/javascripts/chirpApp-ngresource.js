@@ -254,7 +254,7 @@ app.controller('mainController', function ($scope, postService, eveService, eveT
 		
 		//console.log('$scope.showUser vUsername = ' + vUsername); // DEBUG
 		
-		usrTracker.setProperty(usrService.get({username:vUsername}));
+		usrTracker.setProperty(usrService.get({"username":vUsername}));
 	};
 	
 	$scope.showEve = function(vEveTitle){
